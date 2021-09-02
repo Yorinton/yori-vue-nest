@@ -1,4 +1,4 @@
-nama: vue-nest
+name: vue-nest
 on: [push]
 jobs:
   check-bats-version:
