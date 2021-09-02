@@ -11,9 +11,10 @@ jobs:
   execute-sh:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: execute sh
         run: | 
-          ../scripts/build.sh > output.log
+          ./.github/scripts/build.sh > output.log
         shell: bash
       - name: upload output
         uses: actions/upload-artifact@v2
@@ -21,6 +22,7 @@ jobs:
           name: output-log-file
           path: output.log
   display-output:
+    needs: execute-sh
     runs-on: ubuntu-latest
     steps:
       - name: download output and display
