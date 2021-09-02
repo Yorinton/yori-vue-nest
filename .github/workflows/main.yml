@@ -30,6 +30,10 @@ jobs:
         with:
           name: output-log-file
       - name: display
+        env:
+          yori_test_secret: ${{ secrets.YORI_TEST_SECRET_1 }}
         run: | 
+          echo "$yori_test_secret" >> output.log
+        run: |
           cat output.log
         shell: bash
