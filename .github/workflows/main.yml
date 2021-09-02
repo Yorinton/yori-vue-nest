@@ -17,7 +17,7 @@ jobs:
           ./.github/scripts/build.sh > output.log
         shell: bash
       - name: upload output
-        use: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: output-log-file
           path: output.log
@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: download output and display
-        use: actions/download-artifact@v2
+        uses: actions/download-artifact@v2
         with:
           name: output-log-file
       - name: display
