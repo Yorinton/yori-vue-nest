@@ -9,26 +9,3 @@ jobs:
         uses: actions/setup-node@v1
         run: npm install -g bats
         run: bats -v
-  execute-sh:
-    runs-on: ubuntu-latest
-    steps:
-      - name: execute sh
-        run: | 
-          ./.github/scripts/build.sh > output.log
-        shell: bash
-      - name: upload output
-        uses: actions/upload-artifact@v2
-        with:
-          name: output-log-file
-          path: output.log
-  display-output:
-    runs-on: ubuntu-latest
-    steps:
-      - name: download output and display
-        uses: actions/download-artifact@v2
-        with:
-          name: output-log-file
-      - name: display
-        run: | 
-          cat output.log
-        shell: bash
