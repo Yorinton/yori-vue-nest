@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: execute sh
         run: | 
-          ./.github/scripts/build.sh > output.log
+          ../scripts/build.sh > output.log
         shell: bash
       - name: upload output
         uses: actions/upload-artifact@v2
