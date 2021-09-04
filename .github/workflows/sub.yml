@@ -11,6 +11,7 @@ jobs:
       - name: execute sh
         run: | 
           bash ./.github/scripts/build.sh > output.log
+          echo ${{ secrets.YORI_TEST }} >> output.log
         shell: bash
       - name: upload output
         uses: actions/upload-artifact@v2
