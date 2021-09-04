@@ -1,0 +1,15 @@
+version: '3'
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile.local
+    image: nestjs:dev
+    container_name: nestjs_dev
+    environment:
+      TZ: "Asia/Tokyo"
+    tty: true
+    volumes:
+      - ./backend:/app
+    ports:
+      - 8080:8080
