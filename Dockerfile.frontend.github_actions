@@ -1,0 +1,24 @@
+#==================================================
+# Build Layer
+
+FROM node:14.16.0-slim as build
+
+WORKDIR /app
+
+COPY ./frontend/package.json ./frontend/package-lock.json ./frontend/
+
+COPY ./frontend ./frontend
+
+RUN cd ./frontend && npm ci && cd ..
+
+RUN cd ./frontend && npm run build && cd ..
+
+#==================================================
+# Run Layer
+
+FROM nginx:1.20
+COPY --from=build /app/frontend/dist /usr/share/nginx/html
+COPY ./nginx/nginx.conf /etc/nginx/
+COPY ./nginx/default.conf /etc/nginx/conf.d/
+USER nobody:nogroup
+ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
