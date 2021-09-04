@@ -13,7 +13,6 @@ jobs:
       - name: execute sh
         run: | 
           bash ./.github/scripts/build.sh > output.log
-          echo ${{ secrets.YORI_TEST }} >> output.log
         shell: bash
       - name: upload output
         uses: actions/upload-artifact@v2
@@ -30,7 +29,7 @@ jobs:
           name: output-log-file
       - name: display
         env:
-          yori_test_secret: ${{ secrets.YORI_TEST_SECRET_1 }}
+          yori_test_secret: ${{ secrets.YORI_TEST }}
         run: | 
           echo "$yori_test_secret" >> output.log
           cat output.log
