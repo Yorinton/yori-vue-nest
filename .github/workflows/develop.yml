@@ -7,7 +7,7 @@ env:
   ENVIRONMENT: develop
 jobs:
   execute-sh:
-    environment: ${{ env.ENVIRONMENT }}
+    environment: ENVIRONMENT
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
           name: output-log-file
           path: output.log
   display-output:
-    environment: ${{ env.ENVIRONMENT }}
+    environment: ENVIRONMENT
     needs: execute-sh
     runs-on: ubuntu-latest
     steps:
