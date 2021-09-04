@@ -32,6 +32,7 @@ jobs:
       - name: display
         env:
           yori_test_secret: ${{ secrets.YORI_TEST }}
+        if: ${{ secrets.YORI_TEST == 'staging' }}
         run: | 
           echo "$yori_test_secret" >> output.log
           cat output.log
