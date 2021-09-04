@@ -1,0 +1,31 @@
+name: vue-nest
+on: [push]
+jobs:
+  execute-sh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: execute sh
+        run: | 
+          bash ./.github/scripts/build.sh > output.log
+        shell: bash
+      - name: upload output
+        uses: actions/upload-artifact@v2
+        with:
+          name: output-log-file
+          path: output.log
+  display-output:
+    needs: execute-sh
+    runs-on: ubuntu-latest
+    steps:
+      - name: download output and display
+        uses: actions/download-artifact@v2
+        with:
+          name: output-log-file
+      - name: display
+        env:
+          yori_test_secret: ${{ secrets.YORI_TEST_SECRET_1 }}
+        run: | 
+          echo "$yori_test_secret" >> output.log
+          cat output.log
+        shell: bash
