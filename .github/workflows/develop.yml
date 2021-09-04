@@ -7,7 +7,7 @@ env:
   ENVIRONMENT: develop
 jobs:
   execute-sh:
-    environment: ENVIRONMENT
+    environment: develop
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
           name: output-log-file
           path: output.log
   display-output:
-    environment: ENVIRONMENT
+    environment: develop
     needs: execute-sh
     runs-on: ubuntu-latest
     steps:
