@@ -1,5 +1,5 @@
 name: vue-nest
-on: [push]
+on: [workflow_dispatch]
 jobs:
   execute-sh:
     runs-on: ubuntu-latest
