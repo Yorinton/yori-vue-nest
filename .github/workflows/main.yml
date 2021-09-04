@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+      - develop
+      - staging
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
