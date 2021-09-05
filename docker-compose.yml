@@ -3,8 +3,7 @@ services:
   api:
     build:
       context: ./
-      dockerfile: Dockerfile.local
-    image: nestjs:dev
+      dockerfile: Dockerfile.backend.local
     container_name: nestjs_dev
     environment:
       TZ: "Asia/Tokyo"
@@ -13,3 +12,10 @@ services:
       - ./backend:/app
     ports:
       - 8080:8080
+  db:
+    image: postgres:13.3
+    container_name: postgres_dev
+    tty: true
+    ports:
+      - 5432:5432
+    env_file: .env.local
