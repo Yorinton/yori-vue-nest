@@ -55,7 +55,7 @@ jobs:
           # ECS にデプロイできるようにする。
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG -f Dockerfile.frontend.github_actions .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG
-          echo "::set-output name=image::$ECR_REPOSITORY_FRONTEND/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG"
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG"
 
       - name: (backend) Build, tag, and push image to Amazon ECR
         id: build-image-backend
@@ -68,7 +68,7 @@ jobs:
           # ECS にデプロイできるようにする。
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_BACKEND:$IMAGE_TAG -f Dockerfile.backend.github_actions .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY_BACKEND:$IMAGE_TAG
-          echo "::set-output name=image::$ECR_REPOSITORY_BACKEND/$ECR_REPOSITORY_BACKEND:$IMAGE_TAG"          
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY_BACKEND:$IMAGE_TAG"          
 
       ## frontend, backendのタスク定義作成
       - name: Render Amazon ECS task definition for frontend container
