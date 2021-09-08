@@ -1,0 +1,80 @@
+{
+    "cluster": "yorinton-cluster",
+    "serviceName": "yorinton-service",
+    "taskDefinition": "yorinton-task-definition",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:ap-northeast-1:917439743384:targetgroup/yorinton-backend/20eaf4a879b6d733",
+            "loadBalancerName": "yorinton-work",
+            "containerName": "yorinton_backend",
+            "containerPort": 8080
+        },
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:ap-northeast-1:917439743384:targetgroup/yorinton-frontend/d361ae965287b729",
+            "loadBalancerName": "yorinton-work",
+            "containerName": "yorinton_frontend",
+            "containerPort": 3000
+        }
+    ],
+    "serviceRegistries": [
+        {
+            "registryArn": "",
+            "port": 0,
+            "containerName": "",
+            "containerPort": 0
+        }
+    ],
+    "desiredCount": 2,
+    "clientToken": "",
+    "launchType": "FARGATE",
+    "capacityProviderStrategy": [
+        {
+            "capacityProvider": "",
+            "weight": 0,
+            "base": 0
+        }
+    ],
+    "platformVersion": "",
+    "role": "",
+    "deploymentConfiguration": {
+        "maximumPercent": 0,
+        "minimumHealthyPercent": 50
+    },
+    "placementConstraints": [
+        {
+            "type": "distinctInstance",
+            "expression": ""
+        }
+    ],
+    "placementStrategy": [
+        {
+            "type": "spread",
+            "field": ""
+        }
+    ],
+    "networkConfiguration": {
+        "awsvpcConfiguration": {
+            "subnets": [
+                "subnet-06aa95658b93bb5eb",
+                "subnet-02d96ed3859593827"
+            ],
+            "securityGroups": [
+                "sg-0a9514513b15d7b5c"
+            ],
+            "assignPublicIp": "DISABLED"
+        }
+    },
+    "healthCheckGracePeriodSeconds": 15,
+    "schedulingStrategy": "REPLICA",
+    "deploymentController": {
+        "type": "ECS"
+    },
+    "tags": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ],
+    "enableECSManagedTags": false,
+    "propagateTags": "SERVICE"
+}

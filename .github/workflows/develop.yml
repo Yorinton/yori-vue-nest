@@ -9,7 +9,7 @@ env:
   AWS_REGION: ap-northeast-1
   ECR_REPOSITORY_FRONTEND: yorinton_frontend
   ECR_REPOSITORY_BACKEND: yorinton_backend
-  ECS_SERVICE: yorinton-service
+  ECS_SERVICE: ./service_definition.json
   ECS_CLUSTER: yorinton-cluster
   ECS_TASK_DEFINITION: ./task_definition.json
   CONTAINER_NAME_FRONTEND: yorinton_frontend
