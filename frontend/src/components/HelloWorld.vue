@@ -1,14 +1,6 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-defineProps<{ msg: string }>()
-
-const count = ref(0)
-</script>
-
 <template>
   <h1>{{ msg }}</h1>
-  <h2>こんにちわ！！こんにちわ〜〜！！</h2>
+  <h2>こんにちわ！！こんにちわ〜〜！！{{ env }}</h2>
   <p>
     Recommended IDE setup:
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
@@ -16,7 +8,7 @@ const count = ref(0)
     <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
   </p>
 
-  <p>See <code>README.md</code> for more information.</p>
+  <p>AA <code>README.md</code> for more information.</p>
 
   <p>
     <a href="https://vitejs.dev/guide/features.html" target="_blank">
@@ -32,6 +24,18 @@ const count = ref(0)
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
 </template>
+
+<script setup lang="ts">
+import { defineComponent, ref } from 'vue'
+
+defineProps<{ msg: string }>()
+
+const count = ref(0)
+const env = ref()
+env.value = import.meta.env.VITE_TEST_ENV
+
+</script>
+
 
 <style scoped>
 a {
