@@ -31,7 +31,7 @@ import { defineComponent, ref } from 'vue'
 defineProps<{ msg: string }>()
 
 const count = ref(0)
-const env = ref('')
+const env = ref()
 env.value = import.meta.env.VITE_TEST_ENV
 
 </script>
