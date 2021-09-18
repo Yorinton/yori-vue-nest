@@ -1,6 +1,6 @@
 <template>
   <h1>{{ msg }}</h1>
-  <h2>こんにちわ！！こんにちわ〜〜！！{{ env }}</h2>
+  <h2>こんにちわ！！こんにちわ〜〜！！{{ env }}チャス</h2>
   <p>
     Recommended IDE setup:
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
