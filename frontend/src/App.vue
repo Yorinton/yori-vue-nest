@@ -12,6 +12,7 @@ const val = ref('')
   <img alt="Vue logo" src="./assets/logo.png" />
   <input type="text" v-model="val" />
   <HelloWorld :msg="val" />
+  <p v-html="val"></p>
 </template>
 
 <style>
