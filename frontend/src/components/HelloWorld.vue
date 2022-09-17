@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { ref, defineProps } from 'vue'
+import { ref, defineProps, onMounted } from 'vue'
 
 defineProps<{ msg: string }>()
 
 const count = ref(0)
 const value = ref('')
-const onClick = () => {
-  console.log(value.value)
+
+onMounted(() => {
   const sync = document.getElementById('sync')
-  if (!sync) return
-  document.head.innerHTML = value.value
-  sync.innerHTML = value.value
-}
+  if (sync) {
+    console.log(window.location.hash)
+    value.value = decodeURI(window.location.hash)
+  }
+})
+
 </script>
 
 <template>
@@ -24,11 +26,7 @@ const onClick = () => {
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
-  <form @submit.prevent>
-    <input type="text" v-model="value" @input="onInput" />
-    <button @click="onClick">入力</button>
-  </form>
-  <div id="sync"></div>
+  <div id="sync" v-html="value"></div>
 </template>
 
 <style scoped>
