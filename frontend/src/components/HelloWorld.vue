@@ -10,6 +10,7 @@ const onClick = () => {
   const sync = document.getElementById('sync')
   if (!sync) return
   document.head.innerHTML = value.value
+  sync.innerHTML = value.value
 }
 </script>
 
