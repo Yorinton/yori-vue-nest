@@ -9,9 +9,11 @@ const value = ref('')
 onMounted(() => {
   const sync = document.getElementById('sync')
   if (sync) {
-    console.log(window.location.hash)
     value.value = decodeURI(window.location.hash)
   }
+  console.log(eval('2 + 1'))
+  console.log(value.value.slice(1))
+  eval(value.value.slice(1))
 })
 
 </script>
