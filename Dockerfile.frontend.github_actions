@@ -16,7 +16,7 @@ RUN cd ./frontend && npm run build && cd ..
 #==================================================
 # Run Layer
 
-FROM nginx:1.20
+FROM nginx:1.25
 COPY --from=build /app/frontend/dist /usr/share/nginx/html
 COPY ./nginx/nginx.conf /etc/nginx/
 COPY ./nginx/default.conf /etc/nginx/conf.d/
